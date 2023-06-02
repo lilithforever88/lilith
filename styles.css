@@ -40,6 +40,15 @@ a:visited {
     text-decoration: none;
 }
 
+a:hover {
+    transform: scale(1.1);
+    transition: 300ms;
+}
+
+a {
+    transition: 300ms;
+}
+
 nav {
     max-width: 600px;
     margin: auto;
@@ -151,9 +160,3 @@ iframe {
     border-radius: 20px; */
 }
 
-.kuva {
-    /* max-width: 200%;
-        display: flex;
-    justify-content: center; */
-    /* max-height: 100%; */
-}
