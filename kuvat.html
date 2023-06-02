@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Lilith</title>
+        <link rel="stylesheet" href="styles.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="nav.js" defer></script>
+    </head>
+    <body>
+        <div id="head-nav"></div>
+        <div id="kuva-grid"></div>
+    </body>
+
+    <script>
+        const githubAPITree = "https://api.github.com/repos/lilithforever88/lilith/git/trees/main"
+    
+        async function getList() {
+            const main = await fetch(githubAPITree).then(res => res.json())
+            let kuvat;
+            for (const t of main.tree) {
+                if (t.path === "kuvat") {
+                    kuvat = t.url
+                }
+            }
+
+            kuvat = await fetch(kuvat).then(res => res.json()) 
+            for (const t of kuvat.tree) {
+                if (t.path === "galleria") {
+                    kuvat = t.url
+                }
+            }
+
+            const result = await fetch(kuvat).then(res => res.json())
+            const grid = document.getElementById("kuva-grid")
+
+            for (const t of result.tree) {
+                // https://stackoverflow.com/questions/50601081/github-how-to-get-file-list-under-directory-on-github-pages
+                // Täällä luodaan gridiin menevät kuvaoliot
+                // kuvaa vastaavan thumbnailin nimi on kuvannimi_tn.jpg
+                const fileName = t.path
+                let thumbnailName = fileName.replace(/\.[^/.]+$/, "")
+                thumbnailName += "_tn.jpg"
+                const div = document.createElement("div")
+                const img = document.createElement("img")
+                img.src = `https://raw.githubusercontent.com/lilithforever88/lilith/main/thumbnails/galleria/${thumbnailName}`
+                img.classList = "kuva"
+                const a = document.createElement("a")
+                div.classList = "kuva-div"
+                a.href = `https://raw.githubusercontent.com/lilithforever88/lilith/main/kuvat/galleria/${fileName}`
+                a.appendChild(img)
+                div.appendChild(a)
+                grid.appendChild(div)
+            }
+        }
+
+        getList()
+        
+    </script>
+</html>
