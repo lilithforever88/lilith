@@ -1,0 +1,18 @@
+# https://stackoverflow.com/questions/63759173/dynamically-load-all-images-from-folder-subfolders-with-javascript
+
+name: Update Image List
+on:
+  push
+jobs:
+  updateImageList: # you can put any name here
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2 # Checkout repo
+      - shell: bash
+        run: ls -Rpm1 ./kuvat/ > images.txt # Saving file list into a file
+      - name: Save changes
+        uses: actions-go/push@v1 # pushing the changes to the repo
+        with:
+          force: true
+          commit-files: images.txt
+          commit-message: Updating image list
