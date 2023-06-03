@@ -66,6 +66,8 @@ nav {
     display: none;
 }
 
+/* Esittelyt */
+
 iframe {
     width: 100%;
     aspect-ratio: 16/9;
@@ -92,10 +94,137 @@ iframe {
     justify-content: center;
 }
 
+#esittelyt iframe{
+    width: 100%;
+    border: none;
+}
+
+/* Kuvat */
+
 #kuva-grid {
     display: grid;
     justify-content: center;
     grid-template-columns: 220px 220px 220px 220px 220px;
+}
+
+.kuva-div {
+    display: flex;
+    justify-content: center;
+    margin: 20px;
+    /* border: solid black 20px;
+    border-radius: 20px; */
+}
+
+/* Galleria */
+
+#overlay {
+    position: fixed;
+    display: none;
+    width: 100%;
+    height: 100%;
+    margin: auto;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 2;
+    cursor: pointer;
+}
+
+#image-overlay {
+    position: fixed;
+    display: none;
+    width: 85%;
+    height: 80%;
+    margin: auto;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: black;
+    z-index: 4;
+    cursor: pointer;
+}
+
+#next-image {
+    position: fixed;
+    display: none;
+    width: 15%;
+    height: 80%;
+    margin: auto;
+    top: 0;
+    left: 70%;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255,255,255, 0.05);
+    z-index: 6;
+    cursor: pointer;
+    transition: 200ms;
+}
+
+#previous-image {
+    position: fixed;
+    display: none;
+    width: 15%;
+    height: 80%;
+    margin: auto;
+    top: 0;
+    left: -70%;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255,255,255, 0.05);
+    z-index: 6;
+    cursor: pointer;
+    transition: 200ms;
+}
+
+#next-image:hover {
+    background-color: rgba(255,255,255,0.2);
+    transition: 200ms;
+}
+
+#previous-image:hover {
+    background-color: rgba(255,255,255,0.2);
+    transition: 200ms;
+}
+
+#close-image-view {
+    position: fixed;
+    display: none;
+    width: 15%;
+    height: 15%;
+    margin: auto;
+    top: 10%;
+    left: 70%;
+    right: 0;
+    bottom: 75%;
+    background-color: rgba(255,255,255,0.05);
+    z-index: 8;
+    cursor: pointer;
+    transition: 200ms;
+}
+#close-image-view svg {
+    width: 100%;
+    height: 100%;
+}
+
+#close-image-view:hover {
+    background-color: rgba(255,255,255,0.2);
+    transition: 200ms;
+}
+
+#big-image-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#big-image {
+    max-height: 100%;
+    max-width: 100%;
 }
 
 @media only screen and (max-width: 1200px) {
@@ -110,7 +239,12 @@ iframe {
     .jasen-oikea {
         flex-direction: column-reverse;
         justify-content: center;
-    }.jasen-vasen {
+        height: auto;
+    }
+    #esittelyt iframe {
+        height: 100%;
+    }
+    .jasen-vasen {
         flex-direction: column;
         justify-content: center;
     }
@@ -152,11 +286,5 @@ iframe {
     }
 }
 
-.kuva-div {
-    display: flex;
-    justify-content: center;
-    margin: 20px;
-    /* border: solid black 20px;
-    border-radius: 20px; */
-}
+
 
