@@ -7,35 +7,26 @@
         <script src="nav.js" defer></script>
     </head>
     <body>
+        <div id="header"></div>
+        <div id="navbar"></div>
+
         <div id="overlay" onclick="overlayOff()"></div>
-        <div id="image-overlay" onclick="">
+        <div id="image-overlay">
             <div id="big-image-container">
                 <img id="big-image" src="#">
             </div>
-        </div>
-        <div id="next-image" onclick=""></div>
-        <div id="previous-image" onclick=""></div>
-        <div id="close-image-view" onclick="overlayOff()">
-            <svg version="1.0" xmlns="http://www.w3.org/2000/svg"
-                width="1280.000000pt" height="1280.000000pt" viewBox="0 0 1280.000000 1280.000000"
-                preserveAspectRatio="xMidYMid meet">
-                <metadata>
-                Created by potrace 1.15, written by Peter Selinger 2001-2017
-                </metadata>
-                <g transform="translate(0.000000,1280.000000) scale(0.100000,-0.100000)"
-                fill="#000000" stroke="none" fill-opacity="0.4">
-                <path d="M1217 11583 l-1217 -1218 1982 -1982 1983 -1983 -1983 -1983 -1982
-                -1982 1217 -1218 1218 -1217 1982 1982 1983 1983 1983 -1983 1982 -1982 1218
-                1217 1217 1218 -1982 1982 -1983 1983 1983 1983 1982 1982 -1217 1218 -1218
-                1217 -1982 -1982 -1983 -1983 -1983 1983 -1982 1982 -1218 -1217z"/>
-                </g>
-            </svg>
+            <div id="next-image">
+                <img src="arrow_right.svg">
+            </div>
+            <div id="previous-image">
+                <img src="arrow_right.svg">
+            </div>
+            <div id="close-image-view" onclick="overlayOff()">
+                <img src="cross.svg">
+            </div>
         </div>
 
-
-        <div id="head-nav"></div>
         <div id="kuva-grid"></div>
-        <button onclick="overlayOn()">MOI</button>
     </body>
 
     <script>
@@ -105,46 +96,6 @@
                 }
             })
         }
-
-        // TÄMÄ TOIMII, avaa kuvan osoitteen
-        // async function getList() {
-        //     const main = await fetch(githubAPITree).then(res => res.json())
-        //     let kuvat;
-        //     for (const t of main.tree) {
-        //         if (t.path === "kuvat") {
-        //             kuvat = t.url
-        //         }
-        //     }
-
-        //     kuvat = await fetch(kuvat).then(res => res.json()) 
-        //     for (const t of kuvat.tree) {
-        //         if (t.path === "galleria") {
-        //             kuvat = t.url
-        //         }
-        //     }
-
-        //     const result = await fetch(kuvat).then(res => res.json())
-        //     const grid = document.getElementById("kuva-grid")
-
-        //     for (const t of result.tree) {
-        //         // https://stackoverflow.com/questions/50601081/github-how-to-get-file-list-under-directory-on-github-pages
-        //         // Täällä luodaan gridiin menevät kuvaoliot
-        //         // kuvaa vastaavan thumbnailin nimi on kuvannimi_tn.jpg
-        //         const fileName = t.path
-        //         let thumbnailName = fileName.replace(/\.[^/.]+$/, "")
-        //         thumbnailName += "_tn.jpg"
-        //         const div = document.createElement("div")
-        //         const img = document.createElement("img")
-        //         img.src = `https://raw.githubusercontent.com/lilithforever88/lilith/main/thumbnails/galleria/${thumbnailName}`
-        //         img.classList = "kuva"
-        //         const a = document.createElement("a")
-        //         div.classList = "kuva-div"
-        //         a.href = `https://raw.githubusercontent.com/lilithforever88/lilith/main/kuvat/galleria/${fileName}`
-        //         a.appendChild(img)
-        //         div.appendChild(a)
-        //         grid.appendChild(div)
-        //     }
-        // }
         
         getList()
 
@@ -154,9 +105,7 @@
             document.getElementById("next-image").style.display = 'block'
             document.getElementById("previous-image").style.display = 'block'
             document.getElementById("close-image-view").style.display = 'block'
-
-
-
+            setNavbarZ(0)
         }
         function overlayOff() {
             document.getElementById("overlay").style.display = 'none'
@@ -164,8 +113,11 @@
             document.getElementById("next-image").style.display = 'none'
             document.getElementById("previous-image").style.display = 'none'
             document.getElementById("close-image-view").style.display = 'none'
+            setNavbarZ(10)
+        }
 
-
+        function setNavbarZ(z) {
+            document.getElementById("navbar").style.zIndex = z
         }
 
     </script>
