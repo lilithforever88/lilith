@@ -9,20 +9,26 @@
     <body>
         <div id="header"></div>
         <div id="navbar"></div>
-
+        
         <div id="overlay" onclick="overlayOff()"></div>
-        <div id="image-overlay">
+        <div id="image-overlay" onkeydown="galleryKeys">
             <div id="big-image-container">
+                <div id="close-image-view" onclick="overlayOff()">
+                    <div class="close-image-container">   
+                        <img src="cross.svg">
+                    </div>
+                </div>
+                <div id="previous-image">
+                    <div class="arrow-img-container">
+                        <img src="arrow_right.svg">
+                    </div>
+                </div>
                 <img id="big-image" src="#">
-            </div>
-            <div id="next-image">
-                <img src="arrow_right.svg">
-            </div>
-            <div id="previous-image">
-                <img src="arrow_right.svg">
-            </div>
-            <div id="close-image-view" onclick="overlayOff()">
-                <img src="cross.svg">
+                <div id="next-image">
+                    <div class="arrow-img-container">
+                        <img src="arrow_right.svg">
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -102,9 +108,9 @@
         function overlayOn() {
             document.getElementById("overlay").style.display = 'block'
             document.getElementById("image-overlay").style.display = 'block'
-            document.getElementById("next-image").style.display = 'block'
-            document.getElementById("previous-image").style.display = 'block'
-            document.getElementById("close-image-view").style.display = 'block'
+            document.getElementById("next-image").style.display = 'flex'
+            document.getElementById("previous-image").style.display = 'flex'
+            document.getElementById("close-image-view").style.display = 'flex'
             setNavbarZ(0)
         }
         function overlayOff() {
@@ -120,5 +126,24 @@
             document.getElementById("navbar").style.zIndex = z
         }
 
+        const imageOverlay = document.getElementById("image-overlay")
+
+        document.addEventListener("keydown", (event) => {
+            if (!imageOverlay.style.display) return
+
+            if (event.keyCode == 37) {
+                // Ei voi luoda globaalimpaa muuttujaa, koska updateImageView luo klooneja
+                // ja korvaa vanhat
+                document.getElementById("previous-image").click()
+            } else if (event.keyCode == 39) {
+                document.getElementById("next-image").click()
+            }
+            else if (event.keyCode == 27) {
+                document.getElementById("close-image-view").click()
+            }
+        })
+
+
+            
     </script>
 </html>
