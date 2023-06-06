@@ -1,10 +1,10 @@
-const headnav = document.getElementById("header")
+const headnav = document.getElementById('header')
 headnav.innerHTML = `
 <header>
     <b><a href="index.html">LILITH</a></b>
 </header>`
 
-const navbar = document.getElementById("navbar")
+const navbar = document.getElementById('navbar')
 navbar.innerHTML = `
 
 <nav>
@@ -29,24 +29,22 @@ navbar.innerHTML = `
 </div>
 </nav>`
 
-
 function openHamburgerMenu() {
-    document.getElementById("hamburger-overlay").style.display = "block"
+    document.getElementById('hamburger-overlay').style.display = 'block'
     disableScrolling()
-    
 }
 
 function closeHamburgerMenu() {
-    document.getElementById("hamburger-overlay").style.display = "none"
+    document.getElementById('hamburger-overlay').style.display = 'none'
     enableScrolling()
 }
 
 function disableScrolling() {
     const yPos = window.pageYOffset || document.documentElement.scrollTop
     const xPos = window.pageXOffset || document.documentElement.scrollLeft
-    window.onscroll = function() {
+    window.onscroll = function () {
         window.scrollTo(xPos, yPos)
-       }
+    }
 }
 
 function enableScrolling() {
