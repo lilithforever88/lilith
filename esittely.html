@@ -7,6 +7,7 @@
         <script src="nav.js" defer></script>
     </head>
     <body>
+        <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
         <div id="header"></div>
         <div id="navbar"></div>
 
@@ -47,35 +48,19 @@
                 <div class="esittely-img-container">
                     <img src="kuvat/esittelyt/Merja.jpeg" />
                 </div>
-                <p>
-                    <!-- TÄstä  -->
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
-                    tristique libero urna, sit amet pellentesque ligula
-                    sollicitudin eu. Suspendisse efficitur iaculis condimentum.
-                    Nulla dictum, augue vel finibus ornare, dui lacus consequat
-                    lacus, quis efficitur felis nisl vel quam. Orci varius
-                    natoque penatibus et magnis dis parturient montes, nascetur
-                    ridiculus mus. Cras nec rhoncus neque. Ut eleifend felis
-                    ligula, eget viverra dui mollis sit amet. Nam dignissim orci
-                    vehicula feugiat sollicitudin. Quisque ornare sapien sed
-                    nisi pretium vulputate.
-                    <!-- Tähän -->
-                </p>
+                <iframe
+                    src="teksti/esittely/merja.md"
+                    class="iframe-text"
+                    onload="getTextFromIframe(this)"
+                ></iframe>
             </div>
             <h2>Helvi</h2>
             <div class="jasen-oikea">
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
-                    tristique libero urna, sit amet pellentesque ligula
-                    sollicitudin eu. Suspendisse efficitur iaculis condimentum.
-                    Nulla dictum, augue vel finibus ornare, dui lacus consequat
-                    lacus, quis efficitur felis nisl vel quam. Orci varius
-                    natoque penatibus et magnis dis parturient montes, nascetur
-                    ridiculus mus. Cras nec rhoncus neque. Ut eleifend felis
-                    ligula, eget viverra dui mollis sit amet. Nam dignissim orci
-                    vehicula feugiat sollicitudin. Quisque ornare sapien sed
-                    nisi pretium vulputate.
-                </p>
+                <iframe
+                    src="teksti/esittely/helvi.md"
+                    class="iframe-text"
+                    onload="getTextFromIframe(this)"
+                ></iframe>
                 <div class="esittely-img-container">
                     <img src="kuvat/esittelyt/Helvi.jpeg" />
                 </div>
@@ -85,37 +70,19 @@
                 <div class="esittely-img-container">
                     <img src="kuvat/esittelyt/Leena_H.jpeg" />
                 </div>
-                <p>
-                    <!-- TÄstä  -->
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
-                    tristique libero urna, sit amet pellentesque ligula
-                    sollicitudin eu. Suspendisse efficitur iaculis condimentum.
-                    Nulla dictum, augue vel finibus ornare, dui lacus consequat
-                    lacus, quis efficitur felis nisl vel quam. Orci varius
-                    natoque penatibus et magnis dis parturient montes, nascetur
-                    ridiculus mus. Cras nec rhoncus neque. Ut eleifend felis
-                    ligula, eget viverra dui mollis sit amet. Nam dignissim orci
-                    vehicula feugiat sollicitudin. Quisque ornare sapien sed
-                    nisi pretium vulputate.
-                    <!-- Tähän -->
-                </p>
+                <iframe
+                    src="teksti/esittely/leena_h.md"
+                    class="iframe-text"
+                    onload="getTextFromIframe(this)"
+                ></iframe>
             </div>
             <h2>Leena T</h2>
             <div class="jasen-oikea">
-                <p>
-                    <!-- TÄstä  -->
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
-                    tristique libero urna, sit amet pellentesque ligula
-                    sollicitudin eu. Suspendisse efficitur iaculis condimentum.
-                    Nulla dictum, augue vel finibus ornare, dui lacus consequat
-                    lacus, quis efficitur felis nisl vel quam. Orci varius
-                    natoque penatibus et magnis dis parturient montes, nascetur
-                    ridiculus mus. Cras nec rhoncus neque. Ut eleifend felis
-                    ligula, eget viverra dui mollis sit amet. Nam dignissim orci
-                    vehicula feugiat sollicitudin. Quisque ornare sapien sed
-                    nisi pretium vulputate.
-                    <!-- Tähän -->
-                </p>
+                <iframe
+                    src="teksti/esittely/leena_t.md"
+                    class="iframe-text"
+                    onload="getTextFromIframe(this)"
+                ></iframe>
                 <div class="esittely-img-container">
                     <img src="kuvat/esittelyt/Leena_T.jpeg" />
                 </div>
@@ -125,21 +92,27 @@
                 <div class="esittely-img-container">
                     <img src="kuvat/esittelyt/Outi.jpeg" />
                 </div>
-                <p>
-                    <!-- TÄstä  -->
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
-                    tristique libero urna, sit amet pellentesque ligula
-                    sollicitudin eu. Suspendisse efficitur iaculis condimentum.
-                    Nulla dictum, augue vel finibus ornare, dui lacus consequat
-                    lacus, quis efficitur felis nisl vel quam. Orci varius
-                    natoque penatibus et magnis dis parturient montes, nascetur
-                    ridiculus mus. Cras nec rhoncus neque. Ut eleifend felis
-                    ligula, eget viverra dui mollis sit amet. Nam dignissim orci
-                    vehicula feugiat sollicitudin. Quisque ornare sapien sed
-                    nisi pretium vulputate.
-                    <!-- Tähän -->
-                </p>
+                <iframe
+                    src="teksti/esittely/outi.md"
+                    class="iframe-text"
+                    onload="getTextFromIframe(this)"
+                ></iframe>
             </div>
         </div>
+
+        <script>
+
+            function getTextFromIframe(iframe) {
+                const description =
+                        iframe.contentWindow.document.getElementsByTagName("pre")[0]
+                let div = document.createElement('div')
+                console.log(description.innerHTML)
+                console.log(description.innerText)
+                div.innerHTML = marked.parse(description.innerText)
+                console.log("inner", div.innerHTML)
+                iframe.outerHTML = div.innerHTML
+                console.log(div)
+            }
+        </script>
     </body>
 </html>
