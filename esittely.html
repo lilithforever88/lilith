@@ -48,19 +48,23 @@
                 <div class="esittely-img-container">
                     <img src="kuvat/esittelyt/Merja.jpeg" />
                 </div>
-                <iframe
-                    src="teksti/esittely/merja.md"
-                    class="iframe-text"
-                    onload="getTextFromIframe(this)"
-                ></iframe>
+                <div>
+                    <iframe
+                        src="teksti/esittely/merja.md"
+                        class="iframe-text"
+                        onload="getTextFromIframe(this)"
+                    ></iframe>
+                </div>
             </div>
             <h2>Helvi</h2>
             <div class="jasen-oikea">
-                <iframe
-                    src="teksti/esittely/helvi.md"
-                    class="iframe-text"
-                    onload="getTextFromIframe(this)"
-                ></iframe>
+                <div>
+                    <iframe
+                        src="teksti/esittely/helvi.md"
+                        class="iframe-text"
+                        onload="getTextFromIframe(this)"
+                    ></iframe>
+                </div>
                 <div class="esittely-img-container">
                     <img src="kuvat/esittelyt/Helvi.jpeg" />
                 </div>
@@ -70,19 +74,21 @@
                 <div class="esittely-img-container">
                     <img src="kuvat/esittelyt/Leena_H.jpeg" />
                 </div>
-                <iframe
-                    src="teksti/esittely/leena_h.md"
-                    class="iframe-text"
-                    onload="getTextFromIframe(this)"
-                ></iframe>
-            </div>
+                    <iframe
+                        src="teksti/esittely/leena_h.md"
+                        class="iframe-text"
+                        onload="getTextFromIframe(this)"
+                    ></iframe>
+                </div>
             <h2>Leena T</h2>
             <div class="jasen-oikea">
-                <iframe
-                    src="teksti/esittely/leena_t.md"
-                    class="iframe-text"
-                    onload="getTextFromIframe(this)"
-                ></iframe>
+                <div>
+                    <iframe
+                        src="teksti/esittely/leena_t.md"
+                        class="iframe-text"
+                        onload="getTextFromIframe(this)"
+                    ></iframe>
+                </div>
                 <div class="esittely-img-container">
                     <img src="kuvat/esittelyt/Leena_T.jpeg" />
                 </div>
@@ -92,11 +98,13 @@
                 <div class="esittely-img-container">
                     <img src="kuvat/esittelyt/Outi.jpeg" />
                 </div>
-                <iframe
-                    src="teksti/esittely/outi.md"
-                    class="iframe-text"
-                    onload="getTextFromIframe(this)"
-                ></iframe>
+                <div>
+                    <iframe
+                        src="teksti/esittely/outi.md"
+                        class="iframe-text"
+                        onload="getTextFromIframe(this)"
+                    ></iframe>
+                </div>
             </div>
         </div>
 
@@ -106,12 +114,9 @@
                 const description =
                         iframe.contentWindow.document.getElementsByTagName("pre")[0]
                 let div = document.createElement('div')
-                console.log(description.innerHTML)
-                console.log(description.innerText)
                 div.innerHTML = marked.parse(description.innerText)
-                console.log("inner", div.innerHTML)
                 iframe.outerHTML = div.innerHTML
-                console.log(div)
+                
             }
         </script>
     </body>
