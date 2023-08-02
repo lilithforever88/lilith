@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Lilith</title>
+        <link rel="stylesheet" href="styles.css" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <script src="nav.js" defer></script>
+    </head>
+    <body>
+        <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+        <div id="header"></div>
+        <div id="navbar"></div>
+
+        <div id="overlay" onclick="overlayOff()"></div>
+        <div id="image-overlay" onkeydown="galleryKeys">
+            <div id="big-image-container">
+                <div id="close-image-view" onclick="overlayOff()">
+                    <div class="close-image-container">
+                        <img src="cross.svg" />
+                    </div>
+                </div>
+                <div id="previous-image">
+                    <div class="arrow-img-container">
+                        <img src="arrow_right.svg" />
+                    </div>
+                </div>
+                <div id="big-image-and-description">
+                    <img id="big-image" src="#" />
+                    <div id="image-description"></div>
+                </div>
+                <div id="next-image">
+                    <div class="arrow-img-container">
+                        <img src="arrow_right.svg" />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="kuva-grid"></div>
+    </body>
+
+    <script>
+        marked.use({
+            // Herjaa muuten, koska deprecated
+            headerIds: false,
+            headerPrefix: false,
+            mangle: false,
+        })
+
+        const galleryImageDescription = document.getElementById('image-description')
+        const githubAPITree =
+            'https://api.github.com/repos/lilithforever88/lilith/git/trees/main'
+
+        async function getList() {
+            const main = await fetch(githubAPITree).then((res) => res.json())
+            let kuvat
+            for (const t of main.tree) {
+                if (t.path === 'kuvat') {
+                    kuvat = t.url
+                }
+            }
+
+            kuvat = await fetch(kuvat).then((res) => res.json())
+            for (const t of kuvat.tree) {
+                if (t.path === 'media') {
+                    kuvat = t.url
+                }
+            }
+
+            const result = await fetch(kuvat).then((res) => res.json())
+            const grid = document.getElementById('kuva-grid')
+
+            for (const [i, t] of result.tree.entries()) {
+                // https://stackoverflow.com/questions/50601081/github-how-to-get-file-list-under-directory-on-github-pages
+                // Täällä luodaan gridiin menevät kuvaoliot
+                // kuvaa vastaavan thumbnailin nimi on kuvannimi_tn.jpg
+                const fileName = t.path
+                let nameWOextension = fileName.replace(/\.[^/.]+$/, '')
+                let thumbnailName = nameWOextension+'_tn.jpg'
+                const div = document.createElement('div')
+                const img = document.createElement('img')
+                img.src = `https://raw.githubusercontent.com/lilithforever88/lilith/main/thumbnails/media/${thumbnailName}`
+                img.classList = 'kuva'
+                div.classList = 'kuva-div'
+                div.setAttribute(
+                    'imgAddr',
+                    `https://raw.githubusercontent.com/lilithforever88/lilith/main/kuvat/media/${fileName}`
+                )
+                div.setAttribute(
+                    'nameWOextension',
+                    nameWOextension
+                )
+                
+                div.appendChild(img)
+                div.addEventListener('click', () => {
+                    overlayOn()
+                    updateImageView(div)
+                })
+                grid.appendChild(div)
+            }
+        }
+
+        function gallertSetImageDescription(fileName) {
+            const url = `https://raw.githubusercontent.com/lilithforever88/lilith/main/teksti/kuvat/media/${fileName}.md`
+            fetch(url).then(res => {
+                if (!res.ok) {
+                    throw new Error('Description not found')
+                }
+                return res.text() }) 
+                .then(data => marked.parse(data)).then(data => galleryImageDescription.innerHTML = data)
+                .catch(err => {
+                    galleryImageDescription.innerHTML = ""
+                    console.log(err) 
+                })
+
+
+
+        }
+
+        function updateImageView(selectedImage) {
+            /* Kloonataan edellinen ja seuraava -napit, jotta päästään eroon vanhoista eventlistenereistä */
+            const previousImage = document.getElementById('previous-image')
+            const nextImage = document.getElementById('next-image')
+            const bigImage = document.getElementById('big-image')
+            bigImage.src = selectedImage.getAttribute('imgaddr')
+            gallertSetImageDescription(selectedImage.getAttribute('nameWOextension'))
+
+            const previousClone = previousImage.cloneNode(true)
+            previousImage.parentNode.replaceChild(previousClone, previousImage)
+            previousClone.addEventListener('click', () => {
+                if (selectedImage.previousSibling) {
+                    updateImageView(selectedImage.previousSibling)
+                }
+            })
+
+            const nextClone = nextImage.cloneNode(true)
+            nextImage.parentNode.replaceChild(nextClone, nextImage)
+            nextClone.addEventListener('click', () => {
+                if (selectedImage.nextSibling) {
+                    updateImageView(selectedImage.nextSibling)
+                }
+            })
+        }
+
+        getList()
+
+        function overlayOn() {
+            document.getElementById('overlay').style.display = 'block'
+            document.getElementById('image-overlay').style.display = 'block'
+            document.getElementById('next-image').style.display = 'flex'
+            document.getElementById('previous-image').style.display = 'flex'
+            document.getElementById('close-image-view').style.display = 'flex'
+            setNavbarZ(0)
+        }
+        function overlayOff() {
+            document.getElementById('overlay').style.display = 'none'
+            document.getElementById('image-overlay').style.display = 'none'
+            document.getElementById('next-image').style.display = 'none'
+            document.getElementById('previous-image').style.display = 'none'
+            document.getElementById('close-image-view').style.display = 'none'
+            setNavbarZ(10)
+        }
+
+        function setNavbarZ(z) {
+            document.getElementById('navbar').style.zIndex = z
+        }
+
+        const imageOverlay = document.getElementById('image-overlay')
+
+        document.addEventListener('keydown', (event) => {
+            if (!imageOverlay.style.display) return
+
+            if (event.keyCode == 37) {
+                // Ei voi luoda globaalimpaa muuttujaa, koska updateImageView luo klooneja
+                // ja korvaa vanhat
+                document.getElementById('previous-image').click()
+            } else if (event.keyCode == 39) {
+                document.getElementById('next-image').click()
+            } else if (event.keyCode == 27) {
+                document.getElementById('close-image-view').click()
+            }
+        })
+
+        function galleryDetectSwipes() {
+            //Lähde https://stackoverflow.com/questions/2264072/detect-a-finger-swipe-through-javascript-on-the-iphone-and-android
+            let touchstartX = 0
+            let touchendX = 0
+
+            function checkDirection() {
+                if (touchendX < touchstartX)
+                    document.getElementById('next-image').click()
+                if (touchendX > touchstartX)
+                    document.getElementById('previous-image').click()
+            }
+
+            document.addEventListener('touchstart', (e) => {
+                touchstartX = e.changedTouches[0].screenX
+            })
+
+            document.addEventListener('touchend', (e) => {
+                touchendX = e.changedTouches[0].screenX
+                checkDirection()
+            })
+        }
+
+        galleryDetectSwipes()
+    </script>
+</html>
