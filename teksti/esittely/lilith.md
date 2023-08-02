@@ -2,11 +2,11 @@
 
 Lilith-ryhmän tarina alkoi vuonna 1984, kun Merja Hurri toteutti jo jonkin aikaa itäneen ajatuksen feministisen lauluryhmän perustamisesta. 
 
-Ryhmän alkuperäisessä kokoonpanossa oli kuusi jäsentä, mutta pian kokoonpano vakiintui viisijäseniseksi – täyskäsi: kolme tummatukkaista ja kaksi blondia. Vakiokokoonpanossa olivat mukana Merjan sisko Leena, Kellariteatterista tuttu Leena Tanskanen, Outi Hietala sekä Solid-ryhmästä tuttu Helvi Salminen.
+Ryhmän alkuperäisessä kokoonpanossa oli kuusi jäsentä, mutta Varpu Punnosen lähdettyä ryhmästä kokoonpano vakiintui viisijäseniseksi – täyskäsi: kolme tummatukkaista ja kaksi blondia. Vakiokokoonpanossa olivat mukana Merjan sisko Leena, Kellariteatterista tuttu Leena Tanskanen, Outi Hietala sekä Solid-ryhmästä tuttu Helvi Salminen.
 
 Lilithin ohjelmisto oli monipuolinen. Osa sävellyksistä oli ryhmän jäsenien säveltämiä, osa oli tuttuja lauluja jotka saivat Lilithin käsittelyssä aivan uudenlaisen ilmeen. Lilith teki ryhmätyönä sanoitukset Cabaret-musikaalin ”Money Money”-kappaleeseen joka Lilithin versiossa ruoti kasinotaloutta todeten ”Saa raha kaiken rullaamaan” sekä Pennies from heaven -sarjasta tuttuun ”Nasty man” -lauluun josta tuli Etelä-savolaisittain ”Köpsä mies”.
 
-Merja teki ryhmälle laulusovituksia, joista osa oli neliäänisiä. Laulujen hiominen esityskuntoon vaati paljon harjoittelua. Merjan tarkassa ja vaativassa ohjauksessa ryhmän lauluilmaisu monipuolistui, äänenpuhtaudesta tingitty ja tulkinnoista keskusteltiin antaumuksella yhteisen näkemyksen löytämiseksi.
+Merja teki ryhmälle laulusovituksia, joista osa oli neliäänisiä. Laulujen hiominen esityskuntoon vaati paljon harjoittelua. Hurrin sisarusten  tarkassa ja vaativassa ohjauksessa ryhmän lauluilmaisu monipuolistui, äänenpuhtaudesta tingitty ja tulkinnoista keskusteltiin antaumuksella yhteisen näkemyksen löytämiseksi.
 
 Keikkoja oli monenlaisissa tilaisuuksissa, pikkujoulusesongin tienoilla joskus jopa useita viikossa. Monien keikkojen spiikit käsikirjoitettiin ja niitä harjoiteltiin kuten laulujakin. Koreografian päälinjat suunniteltiin etukäteen, ja pukeutumiseen panostettiin.
 
