@@ -96,6 +96,12 @@
         </div>
 
         <script>
+            marked.use({
+                // Herjaa muuten, koska deprecated
+                headerIds: false,
+                headerPrefix: false,
+                mangle: false,
+            })
 
             function getTextFromIframe(iframe) {
                 const description =

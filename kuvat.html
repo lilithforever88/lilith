@@ -7,6 +7,7 @@
         <script src="nav.js" defer></script>
     </head>
     <body>
+        <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
         <div id="header"></div>
         <div id="navbar"></div>
 
@@ -23,7 +24,10 @@
                         <img src="arrow_right.svg" />
                     </div>
                 </div>
-                <img id="big-image" src="#" />
+                <div id="big-image-and-description">
+                    <img id="big-image" src="#" />
+                    <div id="image-description"></div>
+                </div>
                 <div id="next-image">
                     <div class="arrow-img-container">
                         <img src="arrow_right.svg" />
@@ -36,6 +40,14 @@
     </body>
 
     <script>
+        marked.use({
+            // Herjaa muuten, koska deprecated
+            headerIds: false,
+            headerPrefix: false,
+            mangle: false,
+        })
+
+        const galleryImageDescription = document.getElementById('image-description')
         const githubAPITree =
             'https://api.github.com/repos/lilithforever88/lilith/git/trees/main'
 
@@ -63,8 +75,8 @@
                 // Täällä luodaan gridiin menevät kuvaoliot
                 // kuvaa vastaavan thumbnailin nimi on kuvannimi_tn.jpg
                 const fileName = t.path
-                let thumbnailName = fileName.replace(/\.[^/.]+$/, '')
-                thumbnailName += '_tn.jpg'
+                let nameWOextension = fileName.replace(/\.[^/.]+$/, '')
+                let thumbnailName = nameWOextension+'_tn.jpg'
                 const div = document.createElement('div')
                 const img = document.createElement('img')
                 img.src = `https://raw.githubusercontent.com/lilithforever88/lilith/main/thumbnails/galleria/${thumbnailName}`
@@ -74,6 +86,11 @@
                     'imgAddr',
                     `https://raw.githubusercontent.com/lilithforever88/lilith/main/kuvat/galleria/${fileName}`
                 )
+                div.setAttribute(
+                    'nameWOextension',
+                    nameWOextension
+                )
+                
                 div.appendChild(img)
                 div.addEventListener('click', () => {
                     overlayOn()
@@ -83,12 +100,30 @@
             }
         }
 
+        function gallertSetImageDescription(fileName) {
+            const url = `https://raw.githubusercontent.com/lilithforever88/lilith/main/teksti/kuvat/galleria/${fileName}.md`
+            fetch(url).then(res => {
+                if (!res.ok) {
+                    throw new Error('Description not found')
+                }
+                return res.text() }) 
+                .then(data => marked.parse(data)).then(data => galleryImageDescription.innerHTML = data)
+                .catch(err => {
+                    galleryImageDescription.innerHTML = ""
+                    console.log(err) 
+                })
+
+
+
+        }
+
         function updateImageView(selectedImage) {
             /* Kloonataan edellinen ja seuraava -napit, jotta päästään eroon vanhoista eventlistenereistä */
             const previousImage = document.getElementById('previous-image')
             const nextImage = document.getElementById('next-image')
             const bigImage = document.getElementById('big-image')
             bigImage.src = selectedImage.getAttribute('imgaddr')
+            gallertSetImageDescription(selectedImage.getAttribute('nameWOextension'))
 
             const previousClone = previousImage.cloneNode(true)
             previousImage.parentNode.replaceChild(previousClone, previousImage)
