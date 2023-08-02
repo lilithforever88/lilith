@@ -12,7 +12,7 @@ navbar.innerHTML = `
         <a href="esittely.html">Esittely</a>
         <a href="kuvat.html">Kuvat</a>
         <a href="https://www.youtube.com/@lilith8278">Videot</a>
-        <a href="#">Media</a>
+        <a href="media.html">Media</a>
     </div>
     <div id="hamburger-overlay" onclick="closeHamburgerMenu()">
         <div id="burger-links">
@@ -20,7 +20,7 @@ navbar.innerHTML = `
             <a href="esittely.html"><div>Esittely</div></a>
             <a href="kuvat.html"><div>Kuvat</div></a>
             <a href="https://www.youtube.com/@lilith8278"><div>Videot</div></a>
-            <a href="#"><div>Media</div></a>
+            <a href="media.html"><div>Media</div></a>
         </div>
     </div>
 
