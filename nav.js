@@ -11,7 +11,7 @@ navbar.innerHTML = `
     <div id="nav-links">
         <a href="esittely.html">Esittely</a>
         <a href="kuvat.html">Kuvat</a>
-        <a href="#">Videot</a>
+        <a href="https://www.youtube.com/@lilith8278">Videot</a>
         <a href="#">Media</a>
     </div>
     <div id="hamburger-overlay" onclick="closeHamburgerMenu()">
@@ -19,7 +19,7 @@ navbar.innerHTML = `
             <img src="burger-menu.svg">
             <a href="esittely.html"><div>Esittely</div></a>
             <a href="kuvat.html"><div>Kuvat</div></a>
-            <a href="#"><div>Videot</div></a>
+            <a href="https://www.youtube.com/@lilith8278"><div>Videot</div></a>
             <a href="#"><div>Media</div></a>
         </div>
     </div>
