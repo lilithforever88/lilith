@@ -33,7 +33,7 @@
                 <div class="esittely-img-container">
                     <img src="kuvat/esittelyt/Merja.jpeg" />
                 </div>
-                <div>
+                <div class="esittely-div">
                     <iframe
                         src="teksti/esittely/merja.md"
                         class="iframe-text"
@@ -43,7 +43,7 @@
             </div>
             <h2>Helvi</h2>
             <div class="jasen-oikea">
-                <div>
+                <div class="esittely-div">
                     <iframe
                         src="teksti/esittely/helvi.md"
                         class="iframe-text"
@@ -59,7 +59,7 @@
                 <div class="esittely-img-container">
                     <img src="kuvat/esittelyt/Leena_H.jpeg" />
                 </div>
-                <div>
+                <div class="esittely-div">
                     <iframe
                         src="teksti/esittely/leena_h.md"
                         class="iframe-text"
@@ -69,7 +69,7 @@
             </div>
             <h2>Leena T</h2>
             <div class="jasen-oikea">
-                <div>
+                <div class="esittely-div">
                     <iframe
                         src="teksti/esittely/leena_t.md"
                         class="iframe-text"
@@ -85,7 +85,7 @@
                 <div class="esittely-img-container">
                     <img src="kuvat/esittelyt/Outi.jpeg" />
                 </div>
-                <div>
+                <div class="esittely-div">
                     <iframe
                         src="teksti/esittely/outi.md"
                         class="iframe-text"
@@ -100,9 +100,7 @@
             function getTextFromIframe(iframe) {
                 const description =
                         iframe.contentWindow.document.getElementsByTagName("pre")[0]
-                let div = document.createElement('div')
-                div.innerHTML = marked.parse(description.innerText)
-                iframe.outerHTML = div.innerHTML
+                iframe.outerHTML = marked.parse(description.innerText)
                 
             }
         </script>
