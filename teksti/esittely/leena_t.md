@@ -1,5 +1,4 @@
-<p id="description">
-leena Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tristique libero urna, sit amet pellentesque ligula sollicitudin eu. Suspendisse efficitur iaculis condimentum. Nulla dictum, augue vel finibus ornare, dui lacus consequat lacus, quis efficitur felis nisl vel quam. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Cras nec rhoncus neque. Ut eleifend felis ligula, eget viverra dui mollis sit amet. Nam dignissim orci vehicula feugiat sollicitudin. Quisque ornare sapien sed nisi pretium vulputate.
-<br>
-Loppu
-</p>
+Olen laulanut ja soittanut pienestä pitäen. Kuopion musiikkilukiota käydessäni pääsin mukaan pariin kaupunginteatterin musiikkiproduktioon, minkä seurauksena sairastuin parantumattomaan teatterikärpäsen puremaan. Niinpä yliopistovuosinani hakeuduin Helsingin Kellariteatteriin. Siitä alkoi minun Lilith-taipaleeni, sillä  Kellariteatterissa tutustuin Hurrin sisaruksiin.
+
+Kun  Merja sitten kertoi kokoavansa lauluyhtyettä ja pyysi mukaan, olin innoissani! Lilithissä oli kivaa: huumori kukki, omaperäiset ideat rönsyilivät, ja kaikkea kannatteli lämmin, mutta tiukka feministinen eetos. Sekoitimme stemmalauluun teatteri-ilmaisua. Olimme sitoutuneita, harjoittelimme ja hioimme esityksiämme. Oli mahtavaa haastaa itseään ja kartuttaa esiintymistaitojaan! 
+
